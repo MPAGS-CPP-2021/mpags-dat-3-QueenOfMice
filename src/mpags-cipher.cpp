@@ -91,7 +91,6 @@ int main(int argc, char* argv[])
 
     // We have the key as a string, but the Caesar cipher needs an unsigned long, so we first need to convert it
     // We default to having a key of 0, i.e. no encryption, if no key was provided on the command line
-    std::size_t caesarKey{0};
     if (!ps.cipherKey.empty()) {
         // Before doing the conversion we should check that the string contains a
         // valid positive integer.
@@ -113,12 +112,11 @@ int main(int argc, char* argv[])
                 return 1;
             }
         }
-        CaesarCipher c(ps.cipherKey);
-        caesarKey = c.key_;
     }
+    CaesarCipher c(ps.cipherKey);
 
     // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-    std::string outputText{runCaesarCipher(inputText, caesarKey, ps.encrypt)};
+    std::string outputText{c.applyCipher(ps.encrypt, inputText)};
 
     // Output the encrypted/decrypted text to stdout/file
     if (!ps.outputFile.empty()) {

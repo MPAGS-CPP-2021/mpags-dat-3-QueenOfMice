@@ -10,6 +10,8 @@ class CaesarCipher {
         explicit CaesarCipher(const std::string skey);
     
     std::size_t key_{0};
+
+    std::string applyCipher(bool& encrypt, std::string& inputText);
 };
 
 #endif
