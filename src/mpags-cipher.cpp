@@ -1,3 +1,4 @@
+#include "CaesarCipher.hpp"
 #include "ProcessCommandLine.hpp"
 #include "RunCaesarCipher.hpp"
 #include "TransformChar.hpp"
@@ -10,20 +11,13 @@
 
 int main(int argc, char* argv[])
 {
-    /*
-    // Convert the command-line arguments into a more easily usable form
-    ProgramSettings.cmdLineArgs{argv, argv + argc};
 
-    // Options that might be set by the command-line arguments
-    ProgramSettings.helpRequested{false};
-    ProgramSettings.versionRequested{false};
-    ProgramSettings.inputFile{""};
-    ProgramSettings.outputFile{""};
-    ProgramSettings.cipherKey{""};
-    ProgramSettings.encrypt{true};
-    */
+    // TODO set defaults in the definition of the struct
 
+    // Initialise struct that will contain information from the cmd line
     ProgramSettings ps{false, false, "", "", "", true};
+
+    // Put cmd line args into a vector
     const std::vector<std::string>& cmdLineArgs{argv, argv + argc};
 
     // Process command line arguments
