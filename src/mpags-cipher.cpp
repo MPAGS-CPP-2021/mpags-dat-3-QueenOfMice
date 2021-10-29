@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
     // Like help, requires no further action,
     // so return from main with zero to indicate success
     if (ps.versionRequested) {
-        std::cout << "0.2.0" << std::endl;
+        std::cout << "0.2.1" << std::endl;
         return 0;
     }
 
@@ -113,7 +113,8 @@ int main(int argc, char* argv[])
                 return 1;
             }
         }
-        caesarKey = std::stoul(ps.cipherKey);
+        CaesarCipher c(ps.cipherKey);
+        caesarKey = c.key_;
     }
 
     // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
